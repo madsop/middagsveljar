@@ -18,6 +18,7 @@ public class MiddagsveljarModell extends AbstractListModel{
 	private PropertyChangeSupport pcs;
 	private Random generator;
 	private int[] resultat;
+	private int[] antalAvKvar;
 
 	/**
 	 * Listar opp alle middagane vi har.
@@ -25,6 +26,10 @@ public class MiddagsveljarModell extends AbstractListModel{
 	 */
 	public ArrayList<Middag> getMiddagar(){
 		return middagar.getMiddagar();
+	}
+	
+	public void setAntalAvKvar(int[] antalAvKvar){
+		this.antalAvKvar = antalAvKvar;
 	}
 	
 	/**
@@ -78,11 +83,11 @@ public class MiddagsveljarModell extends AbstractListModel{
 		int i = index+1;
 		
 		if (resultat[index] == 1) {
-			return "Middag nr " +i + ": " +middagar.getMiddagar().get(index).getNamn();
+			return "Middag nr " +i + ": " +middagar.getMiddagar().get(index).getNamn() +" (telt " +antalAvKvar[index] +" gongar alt)";
 		}
 		
 		if (resultat[index] > 1) {
-			return resultat[index] + " gongar middag nr " +i +": " +middagar.getMiddagar().get(index).getNamn();
+			return resultat[index] + " gongar middag nr " +i +": " +middagar.getMiddagar().get(index).getNamn() +" (telt " +antalAvKvar[index] +" gongar alt)";
 		}
 		return null;
 	}

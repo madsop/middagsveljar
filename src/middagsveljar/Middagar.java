@@ -29,7 +29,7 @@ public class Middagar {
 		tacoHandleliste.add(Ingrediens.lauk);
 		tacoHandleliste.add(Ingrediens.tacosaus);
 		tacoHandleliste.add(Ingrediens.salat);
-		middagar.add(new Middag("Taco/Burritos", vegetarvennleg,tacoHandleliste,tomOppskrift));
+		middagar.add(new Middag("Taco", vegetarvennleg,tacoHandleliste,tomOppskrift));
 		
 		// Nachos
 		ArrayList<Ingrediens> nachosHandleliste = new ArrayList<Ingrediens>();
@@ -54,7 +54,7 @@ public class Middagar {
 		
 		
 		middagar.add(new Middag("Baguettar", vegetarvennleg,tomHandleliste,tomOppskrift));
-		middagar.add(new Middag("Spaghetti ala Ålz", kjotthaldig,tomHandleliste,tomOppskrift));
+		middagar.add(new Middag("Spagetti ala Ålz", kjotthaldig,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Mekso-amerikansk gryte", kjotthaldig,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Tacogryte", vegetarvennleg,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Spansk gryte", kjotthaldig,tomHandleliste,tomOppskrift));
@@ -82,7 +82,7 @@ public class Middagar {
 		middagar.add(new Middag("Tomatsuppe", vegetarvennleg,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Svinekotelettar", kjotthaldig,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Løvbiff", kjotthaldig,tomHandleliste,tomOppskrift));
-		middagar.add(new Middag("Fylte bakte potetar", vegetarvennleg,tomHandleliste,tomOppskrift));
+		middagar.add(new Middag("Bakt potet", vegetarvennleg,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Chili con carne", kjotthaldig,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Pannekaker", vegetarvennleg,tomHandleliste,tomOppskrift));
 	
@@ -94,7 +94,7 @@ public class Middagar {
 		middagar.add(new Middag("Kalkun", kjotthaldig,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Tikka Masala", kjotthaldig,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Lapskaus", vegetarvennleg,tomHandleliste,tomOppskrift));
-		middagar.add(new Middag("Osteschnitzel", kjotthaldig,tomHandleliste,tomOppskrift));	
+		middagar.add(new Middag("Osteschnitzlar", kjotthaldig,tomHandleliste,tomOppskrift));	
 		middagar.add(new Middag("Flintsteik", kjotthaldig,tomHandleliste,tomOppskrift));
 		middagar.add(new Middag("Pitapizza", vegetarvennleg,tomHandleliste,tomOppskrift));
 		
@@ -104,7 +104,7 @@ public class Middagar {
 		
 		
 		middagar.add(new Middag("Ovnsgratinert laks",kjotthaldig,tomHandleliste,tomOppskrift));
-		middagar.add(new Middag("Falafel",vegetarvennleg,tomHandleliste,tomOppskrift));
+		middagar.add(new Middag("Felafel",vegetarvennleg,tomHandleliste,tomOppskrift));
 		
 		Middag fiskegrateng = new Middag("Fiskegrateng",kjotthaldig,tomHandleliste,tomOppskrift);	
 		fiskegrateng.likerIkkje(Folk.Elias);
@@ -133,7 +133,7 @@ public class Middagar {
 		veggishimmelHandleliste.add(Ingrediens.lauk);
 		veggishimmelHandleliste.add(Ingrediens.kvitlauk);
 		veggishimmelHandleliste.add(Ingrediens.brokkoli);
-		Middag veggishimmel = new Middag("Veggishimmel",vegetarvennleg,veggishimmelHandleliste,tomOppskrift);
+		Middag veggishimmel = new Middag("Himmel",vegetarvennleg,veggishimmelHandleliste,tomOppskrift);
 		veggishimmel.likerIkkje(Folk.Britti); // ??
 		veggishimmel.likerIkkje(Folk.Matta); // ??
 		middagar.add(veggishimmel);

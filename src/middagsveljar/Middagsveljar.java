@@ -29,6 +29,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	private JPanel kvenErHer;
 	private JCheckBox kven[];
 	public static String newline = System.getProperty("line.separator");
+	private Fillesar fillesar;
 
 	/**
 	 * Enkel konstruktør som lager gui.
@@ -63,6 +64,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	 * Lager alle GUI-variablar og gir dei meining.
 	 */
 	public void settOppGUI(){
+		
 		gbl = new GridBagLayout();
 		GridBagConstraints c;
 		setLayout(gbl);
@@ -135,6 +137,10 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	public Middagsveljar() {
 		middagsmodell = new MiddagsveljarModell(startAntal);
 		middagsmodell.addPropertyChangeListener(this);
+		
+		fillesar = new Fillesar();
+		fillesar.telAntalAvKvar(middagsmodell.getMiddagar());
+		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar());
 
 		settOppGUI();
 
@@ -165,7 +171,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 				middagsmodell.IncreaseElementAt(j);
 			}
 		}
-
+		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar());
 	}
 
 	/**

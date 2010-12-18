@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Middagsinnlesar extends Fillesar{
 
 	public Middagsinnlesar(){
-		filnamn = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/middagar.txt";
+		filnamn = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/data/middagar.txt";
 	}
 
 	public ArrayList<Middag> lesInnMiddag(){

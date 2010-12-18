@@ -145,8 +145,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 
 		settOppGUI();
 
-		kast();
-		
+		kast();		
 	}
 
 	/**

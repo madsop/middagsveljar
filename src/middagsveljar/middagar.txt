@@ -1,0 +1,59 @@
+Taco__-__kjøttdeig,ost,tacokrydder,rømme,paprika,agurk,tomat,mais,ananas,lefse,jalapeños,lauk,tacosaus,salat__-
+Nachos__-__kjøttdeig,nachochips,ost,tacokrydder,tomatsaus__-
+Pasta di Parma__-__pasta_pose,mjølk,kjøttdeig,salat,mais,agurk,paprika__-
+Baguettar__-__-__-
+Spagetti ala Ålz__Britti__-__-
+Mekso-amerikansk gryte__Britti__-__-
+Tacogryte__-__-__-
+Spansk gryte__Britti__-__-
+Lasagne__-__-__-
+Mattas gryte__Marta__-__-
+Laksefilet__Britti__-__-
+Laksekotelett__Britti__-__-
+Ørretfilet__Britti__-__-
+Laksetagliatelle__-__-__-
+Fiskepinnar__Britti__-__-
+Burger__Britti__-__-
+Lam i rull__Britti__-__-
+Heimelaga pizza__-__-__-
+Kyllingfilet__Britti__-__-
+Grilla kylling__Britti__-__-
+Kylling i baconost-saus__Britti__-__-
+Wok__-__-__-
+Zhonguá__-__-__-
+Grønn pasta ala Silje__-__-__-
+Rema-pizza__Britti__-__-
+Karibisk gryte__Britti__-__-
+Tomatsuppe__-__-__-
+Svinekotelettar__Britti__-__-
+Løvbiff__Britti__-__-
+Bakt potet__-__-__-
+Chili con carne__Britti__-__-
+Pannekaker__-__-__-
+Risotto__Britti,Matta__-__-
+Kalkun__Britti__-__-
+Tikka Masala__Britti__-__-
+Lapskaus__-__-__-
+Osteschnitzlar__Britti__-__-
+Flintsteik__Britti__-__-
+Pitapizza__-__-__-
+Fylt paprika__Elias,Britti__-__-
+Gratinert laks__Britti__-__-
+Felafel__-__-__-
+Fiskegrateng__Elias,Britti,Matta__-__-
+Graut__Britti,Elias__-__-
+Vårrullar__Britti,Elias__-__-
+Seifilet__Britti__-__-
+Krema kyllingsuppe__Britti,Elias__-__-
+Himmel__Britti,Matta__sopp,fløtegratinerte_potetar,peppersaus,lauk,kvitlauk,brokkoli__-
+Stekt ris__-__-__-
+Paella__-__-__-
+Fisk masala__-__-__-
+Squashgrateng__Matta__kjøttdeig,kvitlauk,lauk,smør,hakka_tomat,oregano,squash,tomat,ost__Brun kjøttdeigen i smør i en panne,Tilsett hakkede tomater+oregano+salt+pepper og hakket hvitløk,La det koke i ca. 10 minutter,Legg kjøttdeigen i en ildfast form,Skjær løk+squash og tomater i tynne skiver,Legg det taksteinslagt om hverandre over kjøttdeigen,Strø på revet ost,Stekes ved 225 grader C i ca. 20 minutter,Server med kokte poteter eller ris eller pasta
+Fårikål__Matta,Britti__-__-
+Fransk toast__-__-__-
+Sodd__Matta__-__-
+Pytt i panne__-__-__-
+Meksikansk gryte__Britti__-__-
+Stroganoff__Britti__-__-
+Gratinert kylling__Britti__-__-

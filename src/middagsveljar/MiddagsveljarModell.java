@@ -11,7 +11,7 @@ import javax.swing.AbstractListModel;
 public class MiddagsveljarModell extends AbstractListModel{
 	
 	private static final long serialVersionUID = 1L;
-	private Middagar middagar;
+	private ArrayList<Middag> middagar;
 	private int antalMiddagar;
 	public final static String ANTAL_PROPERTY = "kast";
 	public final static String RESULTAT_PROPERTY = "resultat";
@@ -25,7 +25,7 @@ public class MiddagsveljarModell extends AbstractListModel{
 	 * @return Alle middagar i databasen
 	 */
 	public ArrayList<Middag> getMiddagar(){
-		return middagar.getMiddagar();
+		return middagar;
 	}
 	
 	public void setAntalAvKvar(int[] antalAvKvar){
@@ -37,12 +37,12 @@ public class MiddagsveljarModell extends AbstractListModel{
 	 * vel nye middagar for alle dagane ønska.
 	 * @param antalMiddagar - kor mange middagar vil vi ha?
 	 */
-	public MiddagsveljarModell(int antalMiddagar) {
+	public MiddagsveljarModell(ArrayList<Middag> middagar) {
 		pcs = new PropertyChangeSupport(this);
 		generator = new Random();
-		middagar = new Middagar();
-		nyMiddagVald(antalMiddagar);
-		resultat = new int[middagar.getMiddagar().size()];
+		this.middagar = middagar;
+		nyMiddagVald(middagar.size());
+		resultat = new int[middagar.size()];
 	}
 	
 	/**
@@ -67,7 +67,7 @@ public class MiddagsveljarModell extends AbstractListModel{
 	 * @return Eit tal innanfor storleiken til middagsdatabasen.
 	 */
 	public int nyttMiddagsnummer() {
-		return generator.nextInt(middagar.getMiddagar().size());
+		return generator.nextInt(middagar.size());
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -83,25 +83,25 @@ public class MiddagsveljarModell extends AbstractListModel{
 		int i = index+1;
 		
 		if (resultat[index] == 1) {
-			return "Middag nr " +i + ": " +middagar.getMiddagar().get(index).getNamn() +" (telt " +antalAvKvar[index] +" gongar alt)";
+			return "Middag nr " +i + ": " +middagar.get(index).getNamn() +" (telt " +antalAvKvar[index] +" gongar alt)";
 		}
 		
 		if (resultat[index] > 1) {
-			return resultat[index] + " gongar middag nr " +i +": " +middagar.getMiddagar().get(index).getNamn() +" (telt " +antalAvKvar[index] +" gongar alt)";
+			return resultat[index] + " gongar middag nr " +i +": " +middagar.get(index).getNamn() +" (telt " +antalAvKvar[index] +" gongar alt)";
 		}
 		return null;
 	}
 	
 	public int getSize() {
-		return middagar.getMiddagar().size();
+		return middagar.size();
 	}
 	public void IncreaseElementAt(int index) {
 		resultat[index]+=1;
 	}
 	public int getResultat(Middag middag){
 		int index = -1;
-		for (int i = 0; i < middagar.getMiddagar().size(); i++){
-			if (middag==middagar.getMiddagar().get(i)){
+		for (int i = 0; i < middagar.size(); i++){
+			if (middag==middagar.get(i)){
 				index = i;
 			}
 		}
@@ -112,7 +112,7 @@ public class MiddagsveljarModell extends AbstractListModel{
 		Middag temp = null;
 		for (int i = 0; i < resultat.length; i++){
 			if (i>0){
-				temp = middagar.getMiddagar().get(i);
+				temp = middagar.get(i);
 				break;
 			}
 		}

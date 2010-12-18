@@ -3,7 +3,7 @@ Middagar i Havsteinbakken 3
 April
 Tirsdag 6:	Nachos
 Onsdag 7:	Burger
-Torsdag 8:	Nord-amerikansk gryte
+Torsdag 8:	Mekso-amerikansk gryte
 Fredag 9:	Taco
 Laurdag 10:	Pizza
 Søndag 11:	Kyllingfilet
@@ -12,7 +12,7 @@ Tirsdag 13:	Fiskepinnar
 Onsdag 14:	Tikka masala
 Torsdag 15:	Nachos
 Fredag 16:	Pasta di parma
-Laurdag 17:	Spaghetti
+Laurdag 17:	Spagetti ala Ålz
 Søndag 18:	Baguettar
 Måndag 19:	Kyllingfilet
 Tirsdag 20:	Zhonguá
@@ -36,7 +36,7 @@ Onsdag 5:	Tikka masala
 Torsdag 6:	Kyllingwok
 Fredag 7:	Lasagne
 Laurdag 8:	Pytt-i-panne med egg
-Søndag 9:	Laks
+Søndag 9:	Laksefilet
 Måndag 10:	Grilla kylling
 Tirsdag 11:	Taco
 Onsdag 12:	Svinekotelettar
@@ -81,7 +81,7 @@ Torsdag 19:	Meksikansk gryte
 Fredag 20:	Laksenuddelwok
 Laurdag 21:	Taco
 Søndag 22:	-
-Måndag 23:	Ovnsgratinert + stekt laks med ris (/ veggis-Grandiosa)
+Måndag 23:	Ovnsgratinert laks + laksefilet med ris (/ veggis-Grandiosa)
 Tirsdag 24:	Løvbiff
 Onsdag 25:	-
 Torsdag 26:	Kyllingwok (+ 2 * (4 pils og ein pizza) + mykje meir – klede :D)
@@ -106,10 +106,10 @@ Laurdag 11:	Graut
 Søndag 12:	Burger
 Måndag 13:	Stroganoff-gryte / tomatsuppe / kyllingfilet / burger
 Tirsdag 14:	Laksenuddelwok
-Onsdag 15:	Kylling med bacon-ost-saus
+Onsdag 15:	Kylling i baconost-saus
 Torsdag 16:	Heimelaga pizza
 Fredag 17:	Taco
-Laurdag 18:	Fylte bakte potetar
+Laurdag 18:	Bakt potet
 Søndag 19:	Asiatisk buffet
 Måndag 20:	Tikka masala
 Tirsdag 21:	Grilla kylling
@@ -132,7 +132,7 @@ Tirsdag 5:	Burger
 Onsdag 6:	Kyllingwok
 Torsdag 7:	Pizza grandiosa
 Fredag 8:	Heimelaga pizza
-Laurdag 9:	Laks
+Laurdag 9:	Laksefilet
 Søndag 10:	Baguettar
 Måndag 11:	Fisk cordon bleu
 Tirsdag 12:	Laksenuddelwok
@@ -153,7 +153,7 @@ Tirsdag 26:	- {Kebab}
 Onsdag 27:	Paella
 Torsdag 28:	Burger/nudlar {Felafel/kebab}
 Fredag 29:	Tacogryte
-Laurdag 30:	Laks
+Laurdag 30:	Laksefilet
 Søndag 31:	Viltgryte
 
 November
@@ -179,7 +179,7 @@ Fredag 19:	Vårrullar
 Laurdag 20:	Superiore-pizza
 Søndag 21:	Mama rosa-pizza
 Måndag 22:	Marinerte svinefiletar
-Tirsdag 23:	Spagetti
+Tirsdag 23:	Spagetti ala Ålz
 Onsdag 24:	Felafel
 Torsdag 25:	Tomatsuppe y zhonguá
 Fredag 26:	Taco

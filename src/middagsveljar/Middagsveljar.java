@@ -18,7 +18,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
 	private MiddagsveljarModell middagsmodell;
-	private final int startAntal = 1;
+	private Middagsinnlesar mil;
 	private final int breidde = 1;
 	private JTextField velMiddagHjelpar;
 	private JButton velMiddagKnapp,tilfeldigAntalMiddagar;
@@ -135,7 +135,8 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	 * Lager ein ny modell, kallar oppsettet av gui og gjer eit startval.
 	 */
 	public Middagsveljar() {
-		middagsmodell = new MiddagsveljarModell(startAntal);
+		mil = new Middagsinnlesar();
+		middagsmodell = new MiddagsveljarModell(mil.lesInnMiddag());
 		middagsmodell.addPropertyChangeListener(this);
 		
 		fillesar = new Fillesar();
@@ -145,6 +146,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		settOppGUI();
 
 		kast();
+		
 	}
 
 	/**
@@ -223,7 +225,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 
 		/** Brukaren vil ha ny(e) middag(ar) */
 		public void velMiddagsknappTrykt(){
-			middagsmodell = new MiddagsveljarModell(middagsmodell.getAntalMiddagar());
+			middagsmodell = new MiddagsveljarModell(mil.lesInnMiddag());
 			middagsmodell.addPropertyChangeListener(t);
 			middagarListe.setModel(middagsmodell);
 			kast();

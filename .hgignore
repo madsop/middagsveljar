@@ -1,2 +1,4 @@
 syntax: regexp
 .*\class$
+.*\.project
+.*bin/.*

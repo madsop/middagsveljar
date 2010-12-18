@@ -35,6 +35,7 @@ public class Fillesar {
 					lesiInn.add(readline);
 				}
 			}
+			bufferedreader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

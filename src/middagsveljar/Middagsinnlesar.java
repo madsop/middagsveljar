@@ -3,20 +3,21 @@ package middagsveljar;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Middagsinnlesar extends Fillesar{
 
 	public Middagsinnlesar(){
 		filnamn = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/middagar.txt";
+	}
+
+	public ArrayList<Middag> lesInnMiddag(){
 		try {
 			bufferedreader = new BufferedReader(new FileReader(filnamn));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public ArrayList<Middag> lesInnMiddag(){
 		ArrayList<String> lesiInn = parseFilTilString("__");
 		ArrayList<Middag> middagar = new ArrayList<Middag>();
 		for (int i = 0; i < lesiInn.size(); i++){
@@ -45,6 +46,11 @@ public class Middagsinnlesar extends Fillesar{
 				}
 			}
 			middagar.add(new Middag(namn, likerIkkje, ingrediensar, oppskrift));
+		}
+		try {
+			bufferedreader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		System.out.println("Middagslista vår har totalt " +middagar.size() +" middagar.");
 		return middagar;

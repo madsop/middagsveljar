@@ -171,7 +171,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 				middagsmodell.IncreaseElementAt(j);
 			}
 		}
-		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar());
+		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar()); //a
 	}
 
 	/**

@@ -34,7 +34,6 @@ public class Fillesar {
 			while ((readline = bufferedreader.readLine() ) != null){
 				if (readline.contains(notcontains)){
 					lesiInn.add(readline);
-					System.out.println(readline);
 				}
 			}
 			bufferedreader.close();

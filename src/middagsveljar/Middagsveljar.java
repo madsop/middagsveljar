@@ -31,7 +31,6 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	public static String newline = System.getProperty("line.separator");
 	public static final String bussurl = "http://www.atb.no/xmlhttprequest.php?service=routeplannerOracle.getOracleAnswer&question=";
 	private Fillesar fillesar;
-	private Bussoppslag httptest;
 
 	/**
 	 * Enkel konstruktør som lager gui.
@@ -152,7 +151,6 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar());
 
 		settOppGUI();
-		httptest = new Bussoppslag();
 
 		kast();		
 	}
@@ -294,12 +292,19 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		public void visBuss(){
 			Busslesar busslesar = new Busslesar();
 			ArrayList<Butikk> butikkar = busslesar.dekodButikkar();
-			System.out.println(butikkar.size());
+			ArrayList<String> svar = new ArrayList<String>();
 			for (int i = 1; i < butikkar.size(); i++){
-				String svar = httptest.sendGetRequest(bussurl,Busslesar.Startstring+butikkar.get(0).getPlass()+Busslesar.tilstring+butikkar.get(i).getPlass());
-				JOptionPane.showMessageDialog(null, svar, "Neste buss går...",JOptionPane.INFORMATION_MESSAGE);
-				System.out.println(svar);
+				svar.add(Bussoppslag.sendGetRequest(bussurl,Busslesar.Startstring+butikkar.get(0).getPlass()+Busslesar.tilstring+butikkar.get(i).getPlass()));
 			}
+			
+			String svarstreng = "";
+			for (int i = 0; i < svar.size(); i++){
+				svarstreng+=busslesar.parseBusstuc(svar.get(i),butikkar.get(0).getPlass())+"\n";
+				//svarstreng+=svar.get(i)+"\n";
+			}
+			svarstreng+=busslesar.parseTrikk(); // Obs: veldig spesialtilfelle-hack, denne.
+			
+			JOptionPane.showMessageDialog(null, svarstreng,"Neste buss...",JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		/** Brukaren trykkar på ein knapp */

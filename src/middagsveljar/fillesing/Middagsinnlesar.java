@@ -1,10 +1,14 @@
-package middagsveljar;
+package middagsveljar.fillesing;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import middagsveljar.Folk;
+import middagsveljar.Ingrediens;
+import middagsveljar.Middag;
 
 public class Middagsinnlesar extends Fillesar{
 	private static final String attributtskilje = "__";

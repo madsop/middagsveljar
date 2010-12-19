@@ -1,4 +1,4 @@
-package middagsveljar;
+package middagsveljar.buss;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

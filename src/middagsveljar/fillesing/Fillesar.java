@@ -1,4 +1,4 @@
-package middagsveljar;
+package middagsveljar.fillesing;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import middagsveljar.Middag;
 
 public class Fillesar {
 	protected String filsti = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/data/";

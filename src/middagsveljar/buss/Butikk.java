@@ -1,4 +1,4 @@
-package middagsveljar;
+package middagsveljar.buss;
 
 public class Butikk {
 	private String plass;

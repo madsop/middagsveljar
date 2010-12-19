@@ -1,4 +1,4 @@
-package middagsveljar;
+package middagsveljar.buss;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import middagsveljar.fillesing.Fillesar;
 
 public class Busslesar extends Fillesar {
 	public static final String Startstring = "Når%20går%20neste%20buss%20frå%20";
@@ -48,7 +50,6 @@ public class Busslesar extends Fillesar {
 		else {
 			til = til.substring(1);
 			klokkaTil = "senere.";
-			//klokkaTil = tucsvar.substring(tilindeks,)
 		}
 		
 		return "Neste buss frå " +startplass +": nr. " +bussnummer +" klokka " +klokkaFrå +", er på " +til +" " +klokkaTil;

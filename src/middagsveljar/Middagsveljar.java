@@ -8,6 +8,12 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import middagsveljar.buss.Busslesar;
+import middagsveljar.buss.Bussoppslag;
+import middagsveljar.buss.Butikk;
+import middagsveljar.fillesing.Fillesar;
+import middagsveljar.fillesing.Middagsinnlesar;
+
 
 /**
  * Hovudklassa i prosjektet.
@@ -50,7 +56,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	public void fiksKvenErHer(){
 		kvenErHer = new JPanel();
 		kvenErHer.setPreferredSize(new Dimension(100,300));
-		kven = new JCheckBox[9];
+		kven = new JCheckBox[Folk.values().length];
 		for (int i = 0; i < kven.length; i++){
 			kven[i] = new JCheckBox();
 		}
@@ -186,8 +192,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	 * Sjekkar om maten som foreslås er ok for alle som skal ha.
 	 * @param involverte
 	 * @param middag
-	 * @returnfor (int j = 0; j < middagsmodell.getAntalMiddagar(); j++){
-					}
+	 * @return temp
 	 */
 	public boolean greittForAlleInvolverte(boolean[] involverte, Middag middag){
 		boolean temp = true;
@@ -300,7 +305,6 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			String svarstreng = "";
 			for (int i = 0; i < svar.size(); i++){
 				svarstreng+=busslesar.parseBusstuc(svar.get(i),butikkar.get(0).getPlass())+"\n";
-				//svarstreng+=svar.get(i)+"\n";
 			}
 			svarstreng+=busslesar.parseTrikk(); // Obs: veldig spesialtilfelle-hack, denne.
 			

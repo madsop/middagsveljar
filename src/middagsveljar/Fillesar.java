@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Fillesar {
-	protected String filnamn = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/data/liste.txt";
+	protected String filsti = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/data/";
+	protected String filnamn = filsti+"liste.txt";
 	private File fil;
 	protected BufferedReader bufferedreader;
 	private int[] antalAvKvar;

@@ -22,14 +22,16 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	private final int breidde = 1;
 	private JTextField velMiddagHjelpar;
 	private JButton velMiddagKnapp,tilfeldigAntalMiddagar;
-	private JButton visIngrediensar,visOppskrift;
+	private JButton visIngrediensar,visOppskrift,visBuss;
 	private GridBagLayout gbl;
 	private JLabel velLabel;
 	private JList middagarListe;
 	private JPanel kvenErHer;
 	private JCheckBox kven[];
 	public static String newline = System.getProperty("line.separator");
+	public static final String bussurl = "http://www.atb.no/xmlhttprequest.php?service=routeplannerOracle.getOracleAnswer&question=";
 	private Fillesar fillesar;
+	private HTTPTest httptest;
 
 	/**
 	 * Enkel konstruktør som lager gui.
@@ -90,6 +92,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 
 		visOppskrift = new JButton("Vis oppskrift!");
 		visOppskrift.addActionListener(new VeljarHjelpar(this));
+		
+		visBuss = new JButton("Neste buss!");
+		visBuss.addActionListener(new VeljarHjelpar(this));
 
 		fiksKvenErHer();
 
@@ -123,9 +128,12 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		add(visOppskrift,c);
 
 		c.gridy = 7;
+		add(visBuss,c);
+		
+		c.gridy = 8;
 		add(kvenErHer,c);
 
-		c.gridheight = 8;
+		c.gridheight = 9;
 		c.gridx = 3;
 		c.gridy = 0;
 		add(sp,c);
@@ -144,6 +152,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar());
 
 		settOppGUI();
+		httptest = new HTTPTest();
 
 		kast();		
 	}
@@ -282,6 +291,11 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			}
 		}
 
+		public void visBuss(){
+			String svar = httptest.sendGetRequest(bussurl, "Når%20går%20neste%20buss%20frå%20Breidablikk%20til%20sentrum");
+			JOptionPane.showMessageDialog(null, svar, "Neste buss går...",JOptionPane.INFORMATION_MESSAGE);
+			System.out.println(svar);			
+		}
 
 		/** Brukaren trykkar på ein knapp */
 		public void actionPerformed(ActionEvent arg0) {
@@ -300,6 +314,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			/** Vis oppskrifta for den valde middagen */
 			if (arg0.getSource() == visOppskrift) {
 				visOppskrift();
+			}
+			if (arg0.getSource() == visBuss){
+				visBuss();
 			}
 		}
 	}

@@ -7,9 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Middagsinnlesar extends Fillesar{
+	private static final String attributtskilje = "__";
 
 	public Middagsinnlesar(){
-		filnamn = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/data/middagar.txt";
+		filnamn=filsti+"middagar.txt";
 	}
 
 	public ArrayList<Middag> lesInnMiddag(){
@@ -18,10 +19,10 @@ public class Middagsinnlesar extends Fillesar{
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		ArrayList<String> lesiInn = parseFilTilString("__");
-		ArrayList<Middag> middagar = new ArrayList<Middag>();
+		ArrayList<String> lesiInn = parseFilTilString(attributtskilje);
+		ArrayList<Middag> middagar = new ArrayList<Middag>();	
 		for (int i = 0; i < lesiInn.size(); i++){
-			String[] splitta = lesiInn.get(i).split("__");
+			String[] splitta = lesiInn.get(i).split(attributtskilje);
 			String namn = splitta[0];
 			ArrayList<Folk> likerIkkje = new ArrayList<Folk>();
 			if (!splitta[1].equals("-")){

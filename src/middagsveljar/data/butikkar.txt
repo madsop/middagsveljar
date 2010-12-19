@@ -1,0 +1,4 @@
+Breidablikk,heime
+/Rognheim,Prix
+Ila,Mini-bunnpris/Matkroken
+Havstadsenteret,Bunnpris+Matkroken

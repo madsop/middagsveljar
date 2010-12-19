@@ -31,7 +31,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	public static String newline = System.getProperty("line.separator");
 	public static final String bussurl = "http://www.atb.no/xmlhttprequest.php?service=routeplannerOracle.getOracleAnswer&question=";
 	private Fillesar fillesar;
-	private HTTPTest httptest;
+	private Bussoppslag httptest;
 
 	/**
 	 * Enkel konstruktør som lager gui.
@@ -152,7 +152,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar());
 
 		settOppGUI();
-		httptest = new HTTPTest();
+		httptest = new Bussoppslag();
 
 		kast();		
 	}
@@ -292,9 +292,14 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		}
 
 		public void visBuss(){
-			String svar = httptest.sendGetRequest(bussurl, "Når%20går%20neste%20buss%20frå%20Breidablikk%20til%20sentrum");
-			JOptionPane.showMessageDialog(null, svar, "Neste buss går...",JOptionPane.INFORMATION_MESSAGE);
-			System.out.println(svar);			
+			Busslesar busslesar = new Busslesar();
+			ArrayList<Butikk> butikkar = busslesar.dekodButikkar();
+			System.out.println(butikkar.size());
+			for (int i = 1; i < butikkar.size(); i++){
+				String svar = httptest.sendGetRequest(bussurl,Busslesar.Startstring+butikkar.get(0).getPlass()+Busslesar.tilstring+butikkar.get(i).getPlass());
+				JOptionPane.showMessageDialog(null, svar, "Neste buss går...",JOptionPane.INFORMATION_MESSAGE);
+				System.out.println(svar);
+			}
 		}
 
 		/** Brukaren trykkar på ein knapp */

@@ -33,7 +33,11 @@ public class Busslesar extends Fillesar {
 	}
 
 	public String parseBusstuc(String tucsvar, String startplass){
-		tucsvar = tucsvar.split("Buss ")[1];
+		String[] tucs = tucsvar.split("Buss ");
+		if (tucs.length < 2){
+			return "Det går visst ikkje ein buss her på ei god stund...";
+		}
+		tucsvar = tucs[1];
 		int bussnummer = Integer.parseInt(tucsvar.substring(0,tucsvar.indexOf(" ")));
 		String klokkaFrå = tucsvar.substring(tucsvar.indexOf("kl. ")+4,tucsvar.indexOf("kl. ")+8);
 		
@@ -66,7 +70,7 @@ public class Busslesar extends Fillesar {
 		if (time > 1 && time < 6){
 			return "Det går ikkje trikk før om altfor lengje...";
 		}
-
+		
 		if (vekedag == 0 || time > 18 || (vekedag==5 && (time < 9 || time > 15) )){ // For kvar-halvtime-periodane
 			if (min > 25 && min <= 55){ // Nedover
 				tidtilnestenedover = 55-min;
@@ -85,6 +89,17 @@ public class Busslesar extends Fillesar {
 			}
 			else {
 				tidtilnesteoppover = 23-min;
+			}
+		}
+		else if (time < 1){
+			if (min < 25){
+				String retstring="Neste trikk nedover går om altfor lenge.\n";
+				tidtilnesteoppover = 25-min;
+				retstring+="Neste trikk oppover går om " +tidtilnesteoppover +" minutt. \n";
+				return retstring;	
+			}
+			else {
+				return "Det går ikkje trikk før om altfor lenge..";
 			}
 		}
 		else {

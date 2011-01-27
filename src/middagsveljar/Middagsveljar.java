@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -28,7 +29,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	private final int breidde = 1;
 	private JTextField velMiddagHjelpar;
 	private JButton velMiddagKnapp,tilfeldigAntalMiddagar;
-	private JButton visIngrediensar,visOppskrift,visBuss;
+	private JButton visIngrediensar,visOppskrift,visBuss,tilfeldigRett;
 	private GridBagLayout gbl;
 	private JLabel velLabel;
 	private JList middagarListe;
@@ -37,6 +38,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	public static String newline = System.getProperty("line.separator");
 	private Busskontakt busskontakt;
 	private Thread bussthread;
+	private Matprat matprat;
 	
 	private Fillesar fillesar;
 
@@ -103,6 +105,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		visBuss = new JButton("Neste buss!");
 		visBuss.addActionListener(new VeljarHjelpar(this));
 
+		tilfeldigRett = new JButton("Tilfeldig rett!");
+		tilfeldigRett.addActionListener(new VeljarHjelpar(this));
+		
 		fiksKvenErHer();
 
 		velLabel = new JLabel("Antal middagar");
@@ -138,9 +143,12 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		add(visBuss,c);
 		
 		c.gridy = 8;
+		add(tilfeldigRett,c);
+		
+		c.gridy = 9;
 		add(kvenErHer,c);
 
-		c.gridheight = 9;
+		c.gridheight = 10;
 		c.gridx = 3;
 		c.gridy = 0;
 		add(sp,c);
@@ -162,13 +170,23 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		busskontakt = new Busskontakt(this);
 
 		kast();
-		Matprat matprat = new Matprat();
-		System.out.println(matprat.getMiddag().getNamn());
+		matprat = new Matprat(this);
 	}
 	
 	public void oppdaterGUImedBuss(String svarstreng){
 		JOptionPane.showMessageDialog(null, svarstreng,"Neste buss...",JOptionPane.INFORMATION_MESSAGE);
 		bussthread.interrupt();
+	}
+	
+	public void innhentaMiddag(Middag middag){
+		int vel = JOptionPane.showConfirmDialog(this, "Synes du " +middag.getNamn() + " høyres bra ut?","Kva trur du?",JOptionPane.YES_NO_CANCEL_OPTION);
+		if (vel == JOptionPane.YES_OPTION){
+			// Legg til retten blant dei vi har
+		}
+		else if (vel == JOptionPane.NO_OPTION){
+			System.out.println("Neivel, vi prøver på nytt");
+			matprat.getTilfeldigMiddag();
+		}
 	}
 
 	/**
@@ -309,6 +327,10 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			System.out.println(bussthread);
 			bussthread.start();
 		}
+		
+		public void tilfeldigRett(){
+			matprat.getTilfeldigMiddag();
+		}
 
 		/** Brukaren trykkar på ein knapp */
 		public void actionPerformed(ActionEvent arg0) {
@@ -330,6 +352,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			}
 			if (arg0.getSource() == visBuss){
 				visBuss();
+			}
+			if (arg0.getSource() == tilfeldigRett){
+				tilfeldigRett();
 			}
 		}
 	}

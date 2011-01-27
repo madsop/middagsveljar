@@ -19,6 +19,7 @@ public class Busskontakt implements Runnable{
 		for (int i = 1; i < butikkar.size(); i++){
 			svar.add(Bussoppslag.sendGetRequest(bussurl,Busslesar.Startstring+butikkar.get(0).getPlass()+Busslesar.tilstring+butikkar.get(i).getPlass()));
 		}
+		System.out.println("ANtal butikkar: " +	svar.size());
 		
 		String svarstreng = "";
 		for (int i = 0; i < svar.size(); i++){

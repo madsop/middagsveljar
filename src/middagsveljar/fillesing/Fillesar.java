@@ -22,18 +22,8 @@ public class Fillesar {
 	}
 
 	public Fillesar(){
-		File f1 = new File(".");
-		try{
-			System.out.println(f1.getCanonicalPath());
-		}
-		catch (IOException ioe){
-			
-		}
 		try {
-			//fil = new File(filnamn);
-			System.out.println(filnamn);
 			is = getClass().getResourceAsStream(filnamn);
-			System.out.println(is);
 			InputStreamReader isr = new InputStreamReader(is);
 			bufferedreader = new BufferedReader(isr);
 		} catch (Exception e) {

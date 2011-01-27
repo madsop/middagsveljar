@@ -1,27 +1,49 @@
 package middagsveljar.innhenting;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import middagsveljar.Middag;
+import middagsveljar.Middagsveljar;
 import middagsveljar.buss.Bussoppslag;
 import middagsveljar.data.Folk;
 
 public class Matprat implements HentFraNett{
 	private String URL = "http://www.matprat.no/artikkel.aspx?artid=";
-	private String artikkelURL="9114";
+	private int antalArtiklar = 19715;	
+	private Middagsveljar middagsveljar;
 	
-	public Middag getMiddag() {
+	public Matprat(Middagsveljar middagsveljar){
+		this.middagsveljar = middagsveljar;
+	}
+
+	public void getTilfeldigMiddag(){
+		Middag m = null;
+		Random generator = new Random();
+		while (m == null){
+			int tilfeldigTal = generator.nextInt(antalArtiklar);
+			System.out.println(tilfeldigTal);
+			m = getMiddag(tilfeldigTal); 
+		}
+		System.out.println(m.getNamn());
+		middagsveljar.innhentaMiddag(m);
+	}
+
+	private Middag getMiddag(int artikkelURL) {
 		String heilesida = Bussoppslag.sendGetRequest(URL+artikkelURL, null);
 		Middag m = parseRaatekst(heilesida);
-		System.out.println(heilesida.length());
 		return m;
 	}
-	
+
 	private Middag parseRaatekst(String heilesida){
 		heilesida = heilesida.split("<h1>")[2];
 		String namn = heilesida.split("</h1>")[0].trim();
-		heilesida = heilesida.split("<h3>Ingredienser</h3>")[1].trim();
-		String[] splitta = heilesida.split("</ul>");
+		String[] splitta = heilesida.split("<h3>Ingredienser</h3>");
+		if (splitta.length < 2){
+			return null;
+		}
+		heilesida = splitta[1].trim();
+		splitta = heilesida.split("</ul>");
 		String ingrediensramt = splitta[0];
 		String[] ingrediensarRaa = ingrediensramt.split("<li>");
 		ArrayList<String> ingrediensar = new ArrayList<String>();

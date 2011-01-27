@@ -2,17 +2,18 @@ package middagsveljar.fillesing;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import middagsveljar.Middag;
 
 public class Fillesar {
-	protected String filsti = "/home/mads/Dropbox/Programmering/Eclipse-workspace/middagsveljar/src/middagsveljar/data/";
+	//protected String filsti = "src/middagsveljar/data/";
+	protected String filsti = "/middagsveljar/data/";
 	protected String filnamn = filsti+"liste.txt";
-	private File fil;
+	private InputStream is;
 	protected BufferedReader bufferedreader;
 	private int[] antalAvKvar;
 
@@ -21,10 +22,21 @@ public class Fillesar {
 	}
 
 	public Fillesar(){
+		File f1 = new File(".");
+		try{
+			System.out.println(f1.getCanonicalPath());
+		}
+		catch (IOException ioe){
+			
+		}
 		try {
-			fil = new File(filnamn);
-			bufferedreader = new BufferedReader(new FileReader(fil));
-		} catch (FileNotFoundException e) {
+			//fil = new File(filnamn);
+			System.out.println(filnamn);
+			is = getClass().getResourceAsStream(filnamn);
+			System.out.println(is);
+			InputStreamReader isr = new InputStreamReader(is);
+			bufferedreader = new BufferedReader(isr);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

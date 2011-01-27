@@ -1,4 +1,4 @@
-package middagsveljar;
+package middagsveljar.data;
 
 public enum Ingrediens {
 	kjøttdeig, tacokrydder, tacosaus, rømme, ost, lauk, sopp, kvitlauk, agurk, tomat, paprika, mais, ananas,

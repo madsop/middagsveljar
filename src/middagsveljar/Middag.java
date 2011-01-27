@@ -2,6 +2,9 @@ package middagsveljar;
 
 import java.util.ArrayList;
 
+import middagsveljar.data.Folk;
+import middagsveljar.data.Ingrediens;
+
 public class Middag {
 	private String namn;
 	private ArrayList<Ingrediens> handleliste;

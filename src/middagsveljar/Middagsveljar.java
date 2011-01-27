@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import middagsveljar.buss.Busslesar;
-import middagsveljar.buss.Bussoppslag;
-import middagsveljar.buss.Butikk;
+import middagsveljar.buss.Busskontakt;
+import middagsveljar.data.Folk;
+import middagsveljar.data.Ingrediens;
 import middagsveljar.fillesing.Fillesar;
 import middagsveljar.fillesing.Middagsinnlesar;
 
@@ -35,7 +35,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	private JPanel kvenErHer;
 	private JCheckBox kven[];
 	public static String newline = System.getProperty("line.separator");
-	public static final String bussurl = "http://www.atb.no/xmlhttprequest.php?service=routeplannerOracle.getOracleAnswer&question=";
+	private Busskontakt busskontakt;
+	private Thread bussthread;
+	
 	private Fillesar fillesar;
 
 	/**
@@ -152,13 +154,19 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		middagsmodell = new MiddagsveljarModell(mil.lesInnMiddag());
 		middagsmodell.addPropertyChangeListener(this);
 		
-		fillesar = new Fillesar();
+		fillesar = new Fillesar(); 
 		fillesar.telAntalAvKvar(middagsmodell.getMiddagar());
 		middagsmodell.setAntalAvKvar(fillesar.getAntalAvKvar());
 
 		settOppGUI();
+		busskontakt = new Busskontakt(this);
 
-		kast();		
+		kast();
+	}
+	
+	public void oppdaterGUImedBuss(String svarstreng){
+		JOptionPane.showMessageDialog(null, svarstreng,"Neste buss...",JOptionPane.INFORMATION_MESSAGE);
+		bussthread.interrupt();
 	}
 
 	/**
@@ -295,20 +303,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		}
 
 		public void visBuss(){
-			Busslesar busslesar = new Busslesar();
-			ArrayList<Butikk> butikkar = busslesar.dekodButikkar();
-			ArrayList<String> svar = new ArrayList<String>();
-			for (int i = 1; i < butikkar.size(); i++){
-				svar.add(Bussoppslag.sendGetRequest(bussurl,Busslesar.Startstring+butikkar.get(0).getPlass()+Busslesar.tilstring+butikkar.get(i).getPlass()));
-			}
-			
-			String svarstreng = "";
-			for (int i = 0; i < svar.size(); i++){
-				svarstreng+=busslesar.parseBusstuc(svar.get(i),butikkar.get(0).getPlass())+"\n";
-			}
-			svarstreng+=busslesar.parseTrikk(); // Obs: veldig spesialtilfelle-hack, denne.
-			
-			JOptionPane.showMessageDialog(null, svarstreng,"Neste buss...",JOptionPane.INFORMATION_MESSAGE);
+			bussthread = new Thread(busskontakt);
+			System.out.println(bussthread);
+			bussthread.start();
 		}
 
 		/** Brukaren trykkar på ein knapp */

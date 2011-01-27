@@ -1,14 +1,13 @@
 package middagsveljar.fillesing;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import middagsveljar.Folk;
-import middagsveljar.Ingrediens;
 import middagsveljar.Middag;
+import middagsveljar.data.Folk;
+import middagsveljar.data.Ingrediens;
 
 public class Middagsinnlesar extends Fillesar{
 	private static final String attributtskilje = "__";
@@ -19,8 +18,8 @@ public class Middagsinnlesar extends Fillesar{
 
 	public ArrayList<Middag> lesInnMiddag(){
 		try {
-			bufferedreader = new BufferedReader(new FileReader(filnamn));
-		} catch (FileNotFoundException e) {
+			bufferedreader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filnamn)));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		ArrayList<String> lesiInn = parseFilTilString(attributtskilje);

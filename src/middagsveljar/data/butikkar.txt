@@ -1,4 +1,4 @@
 Breidablikk,heime
 /Rognheim,Prix
-Ila,Mini-bunnpris/Matkroken
-Havstadsenteret,Bunnpris+Matkroken
+Ila,Mini-bunnpris/Matkroken,8,23,9,23,10,23
+Havstadsenteret,Bunnpris,8,23,9,21,24,24

@@ -13,6 +13,7 @@ import middagsveljar.data.Folk;
 import middagsveljar.data.Ingrediens;
 import middagsveljar.fillesing.Fillesar;
 import middagsveljar.fillesing.Middagsinnlesar;
+import middagsveljar.innhenting.Matprat;
 
 
 /**
@@ -162,6 +163,8 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		busskontakt = new Busskontakt(this);
 
 		kast();
+		Matprat matprat = new Matprat();
+		System.out.println(matprat.getMiddag().getNamn());
 	}
 	
 	public void oppdaterGUImedBuss(String svarstreng){

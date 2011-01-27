@@ -10,7 +10,6 @@ import javax.swing.*;
 
 import middagsveljar.buss.Busskontakt;
 import middagsveljar.data.Folk;
-import middagsveljar.data.Ingrediens;
 import middagsveljar.fillesing.Fillesar;
 import middagsveljar.fillesing.Middagsinnlesar;
 import middagsveljar.innhenting.Matprat;
@@ -255,7 +254,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 
 		/** Brukaren vil sjå ingrediensane til den valde middagen */
 		public void visIngrediensar(){
-			ArrayList<Ingrediens> ingrediensar;
+			ArrayList<String> ingrediensar;
 			Middag valdMiddag;
 			if (middagarListe.isSelectionEmpty()){
 				int forsteValdeMiddag = middagsmodell.getForsteValdeMiddagInt();

@@ -3,15 +3,14 @@ package middagsveljar;
 import java.util.ArrayList;
 
 import middagsveljar.data.Folk;
-import middagsveljar.data.Ingrediens;
 
 public class Middag {
 	private String namn;
-	private ArrayList<Ingrediens> handleliste;
+	private ArrayList<String> handleliste;
 	private ArrayList<String> oppskrift;
 	private ArrayList<Folk> ikkjeLiktAv;
 	
-	public Middag (String namn, ArrayList<Folk> ikkjeLiktAv, ArrayList<Ingrediens> ingrediensar, ArrayList<String> oppskrift) {
+	public Middag (String namn, ArrayList<Folk> ikkjeLiktAv, ArrayList<String> ingrediensar, ArrayList<String> oppskrift) {
 		this.namn = namn;
 		if (ikkjeLiktAv.size() == 0){
 			this.ikkjeLiktAv = new ArrayList<Folk>();
@@ -36,7 +35,7 @@ public class Middag {
 		return namn;
 	}
 
-	public ArrayList<Ingrediens> getIngrediensar() {
+	public ArrayList<String> getIngrediensar() {
 		return handleliste;
 	}
 

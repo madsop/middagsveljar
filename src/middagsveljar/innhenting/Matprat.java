@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import middagsveljar.Middag;
 import middagsveljar.buss.Bussoppslag;
 import middagsveljar.data.Folk;
-import middagsveljar.data.Ingrediens;
 
 public class Matprat implements HentFraNett{
 	private String URL = "http://www.matprat.no/artikkel.aspx?artid=";
@@ -42,7 +41,6 @@ public class Matprat implements HentFraNett{
 			oppskrift.add(k);
 		}
 		ArrayList<Folk> folk = new ArrayList<Folk>();
-		ArrayList<Ingrediens> ing = new ArrayList<Ingrediens>();
-		return new Middag(namn,folk,ing,oppskrift);
+		return new Middag(namn,folk,ingrediensar,oppskrift);
 	}
 }

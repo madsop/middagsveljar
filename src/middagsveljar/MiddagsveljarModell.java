@@ -12,6 +12,7 @@ public class MiddagsveljarModell extends AbstractListModel{
 	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Middag> middagar;
+	private ArrayList<String> ingrediensar;
 	private int antalMiddagar;
 	public final static String ANTAL_PROPERTY = "kast";
 	public final static String RESULTAT_PROPERTY = "resultat";

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import middagsveljar.Middag;
 import middagsveljar.data.Folk;
-import middagsveljar.data.Ingrediens;
 
 public class Middagsinnlesar extends Fillesar{
 	private static final String attributtskilje = "__";
@@ -35,15 +34,15 @@ public class Middagsinnlesar extends Fillesar{
 					likerIkkje.add(f);
 				}
 			}
-			ArrayList<Ingrediens> ingrediensar = new ArrayList<Ingrediens>();
+			ArrayList<String> ingrediensar = new ArrayList<String>();
 			if(!splitta[2].equals("-")){	
 				String[] ingrediens = splitta[2].split(",");
 				for (int j = 0; j < ingrediens.length; j++){
-					ingrediensar.add(Ingrediens.valueOf(ingrediens[j]));
+					ingrediensar.add(ingrediens[j]);
 				}
 			}
 			ArrayList<String> oppskrift = new ArrayList<String>();
-			if(!splitta[2].equals("-")){	
+			if(!splitta[2].equals("-")){
 				String[] oppskriftstring = splitta[2].split(",");
 				for (int j = 0; j < oppskriftstring.length; j++){
 					oppskrift.add(oppskriftstring[j]);

@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.OutputStream;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -13,8 +12,8 @@ import middagsveljar.buss.Busskontakt;
 import middagsveljar.data.Folk;
 import middagsveljar.fillesing.Fillesar;
 import middagsveljar.fillesing.Middagsinnlesar;
+import middagsveljar.innhenting.InnhentaMiddag;
 import middagsveljar.innhenting.Matprat;
-
 
 /**
  * Hovudklassa i prosjektet.
@@ -29,7 +28,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	private final int breidde = 1;
 	private JTextField velMiddagHjelpar;
 	private JButton velMiddagKnapp,tilfeldigAntalMiddagar;
-	private JButton visIngrediensar,visOppskrift,visBuss,tilfeldigRett;
+	private JButton visIngrediensar,visOppskrift,visBuss,tilfeldigRett, visHistorikk;
 	private GridBagLayout gbl;
 	private JLabel velLabel;
 	private JList middagarListe;
@@ -39,6 +38,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	private Busskontakt busskontakt;
 	private Thread bussthread;
 	private Matprat matprat;
+	private ArrayList<InnhentaMiddag> historikk;
 	
 	private Fillesar fillesar;
 
@@ -108,6 +108,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		tilfeldigRett = new JButton("Tilfeldig rett!");
 		tilfeldigRett.addActionListener(new VeljarHjelpar(this));
 		
+		visHistorikk = new JButton("Vis historikk!");
+		visHistorikk.addActionListener(new VeljarHjelpar(this));
+		
 		fiksKvenErHer();
 
 		velLabel = new JLabel("Antal middagar");
@@ -144,11 +147,14 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		
 		c.gridy = 8;
 		add(tilfeldigRett,c);
-		
+
 		c.gridy = 9;
+		add(visHistorikk,c);
+		
+		c.gridy = 10;
 		add(kvenErHer,c);
 
-		c.gridheight = 10;
+		c.gridheight = 11;
 		c.gridx = 3;
 		c.gridy = 0;
 		add(sp,c);
@@ -170,6 +176,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		busskontakt = new Busskontakt(this);
 
 		kast();
+		historikk = new ArrayList<InnhentaMiddag>();
 		matprat = new Matprat(this);
 	}
 	
@@ -178,9 +185,20 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		bussthread.interrupt();
 	}
 	
-	public void innhentaMiddag(Middag middag){
+	public void innhentaMiddag(Middag middag, int id){
+		historikk.add(new InnhentaMiddag(middag.getNamn(), id));
 		int vel = JOptionPane.showConfirmDialog(this, "Synes du " +middag.getNamn() + " høyres bra ut?","Kva trur du?",JOptionPane.YES_NO_CANCEL_OPTION);
 		if (vel == JOptionPane.YES_OPTION){
+			String ingr = "";
+			for (String k : middag.getIngrediensar()){
+				ingr+=k+newline;
+			}
+			JOptionPane.showMessageDialog(null, ingr,"Okai, du treng",JOptionPane.INFORMATION_MESSAGE);
+			String oppskrift = "";
+			for (String k : middag.getOppskrift()){
+				oppskrift+=k+newline;
+			}
+			JOptionPane.showMessageDialog(null, oppskrift,"Du gjer sånn",JOptionPane.INFORMATION_MESSAGE);
 			// Legg til retten blant dei vi har
 		}
 		else if (vel == JOptionPane.NO_OPTION){
@@ -331,6 +349,29 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		public void tilfeldigRett(){
 			matprat.getTilfeldigMiddag();
 		}
+		
+		public void visHistorikk(){
+			JFrame frame = new JFrame("Historikk");
+			JPanel historikkPanel = new JPanel();
+			ArrayList<JButton> buttons = new ArrayList<JButton>();
+			
+			for (InnhentaMiddag m : historikk){
+				buttons.add(new JButton(m.getNamn()));
+			}
+			for (int i = 0; i < buttons.size(); i++){
+				Historikklistener h = new Historikklistener(historikk.get(i).getID());
+				buttons.get(i).addActionListener(h);
+				historikkPanel.add(buttons.get(i));
+			}
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+			Dimension full = toolkit.getScreenSize();
+			historikkPanel.setPreferredSize(full);
+			
+			frame.setContentPane(historikkPanel);
+			frame.pack();
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setVisible(true);
+		}
 
 		/** Brukaren trykkar på ein knapp */
 		public void actionPerformed(ActionEvent arg0) {
@@ -356,7 +397,21 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			if (arg0.getSource() == tilfeldigRett){
 				tilfeldigRett();
 			}
+			if (arg0.getSource() == visHistorikk){
+				visHistorikk();
+			}
 		}
+	}
+	
+	class Historikklistener implements ActionListener{
+		int id;
+		public Historikklistener(int id) {
+			this.id = id;
+		}
+		
+		public void actionPerformed(ActionEvent arg0) {
+			matprat.getMiddagFraaID(id);			
+		}		
 	}
 	/**
 	 * Kva skjer om noko blir endra i modellen?

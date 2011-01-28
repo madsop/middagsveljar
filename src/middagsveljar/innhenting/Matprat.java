@@ -20,13 +20,17 @@ public class Matprat implements HentFraNett{
 	public void getTilfeldigMiddag(){
 		Middag m = null;
 		Random generator = new Random();
+		int tilfeldigTal = -1;
 		while (m == null){
-			int tilfeldigTal = generator.nextInt(antalArtiklar);
+			tilfeldigTal = generator.nextInt(antalArtiklar);
 			System.out.println(tilfeldigTal);
 			m = getMiddag(tilfeldigTal); 
 		}
 		System.out.println(m.getNamn());
-		middagsveljar.innhentaMiddag(m);
+		middagsveljar.innhentaMiddag(m,tilfeldigTal);
+	}
+	public void getMiddagFraaID(int id){
+		middagsveljar.innhentaMiddag(getMiddag(id),id);
 	}
 
 	private Middag getMiddag(int artikkelURL) {
@@ -56,12 +60,22 @@ public class Matprat implements HentFraNett{
 			k = k.replace("</li>", "").trim();
 			ingrediensar.add(k);
 		}
-		ingrediensramt = splitta[1].split("\"text\">")[1].split("</div>")[0].trim().replace("<p>�</p>", "").replace("<p>", "").replace("</p>", "");
-		ingrediensarRaa = ingrediensramt.split("				");
+		ingrediensramt = splitta[1].split("\"text\">")[1].split("</div>")[0].trim().replaceAll("<p>�</p>", "").replaceAll("<p>", "").replaceAll("</p>", "");
+		ingrediensramt = ingrediensramt.replaceAll("<P>�</P>", "");
+		ingrediensramt = ingrediensramt.replaceAll("<P>", "");
+		ingrediensramt = ingrediensramt.replaceAll("</P>", "");
+		ingrediensramt = ingrediensramt.replaceAll("<br />"," ");
+		ingrediensramt = ingrediensramt.replaceAll("<br>"," ");
+		ingrediensramt = ingrediensramt.replaceAll("<BR>", " ");
+		ingrediensramt = ingrediensramt.replaceAll(" 				","\n");
+		System.out.println(ingrediensramt);
+		ingrediensarRaa = ingrediensramt.split("\\.");
 		ArrayList<String> oppskrift = new ArrayList<String>();
 		for (String k : ingrediensarRaa){
 			oppskrift.add(k);
 		}
+		System.out.println(oppskrift.size());
+		
 		ArrayList<Folk> folk = new ArrayList<Folk>();
 		return new Middag(namn,folk,ingrediensar,oppskrift);
 	}

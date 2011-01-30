@@ -8,13 +8,13 @@ import middagsveljar.Middagsveljar;
 import middagsveljar.buss.Bussoppslag;
 import middagsveljar.data.Folk;
 
-public class Matprat implements HentFraNett{
-	private String URL = "http://www.matprat.no/artikkel.aspx?artid=";
-	private int antalArtiklar = 19715;	
+public class Frukt implements HentFraNett{
+	private String URL = "http://www.frukt.no/oppskrift.aspx?artid=";
+	private int antalArtiklar = 19715;
 	private Middagsveljar middagsveljar;
-	private static final int thisPlass = 0;
+	private static final int thisPlass = 1;
 	
-	public Matprat(Middagsveljar middagsveljar){
+	public Frukt(Middagsveljar middagsveljar){
 		this.middagsveljar = middagsveljar;
 	}
 

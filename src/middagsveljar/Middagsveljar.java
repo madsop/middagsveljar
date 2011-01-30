@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -12,6 +13,8 @@ import middagsveljar.buss.Busskontakt;
 import middagsveljar.data.Folk;
 import middagsveljar.fillesing.Fillesar;
 import middagsveljar.fillesing.Middagsinnlesar;
+import middagsveljar.innhenting.Frukt;
+import middagsveljar.innhenting.HentFraNett;
 import middagsveljar.innhenting.InnhentaMiddag;
 import middagsveljar.innhenting.Matprat;
 
@@ -37,7 +40,7 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	public static String newline = System.getProperty("line.separator");
 	private Busskontakt busskontakt;
 	private Thread bussthread;
-	private Matprat matprat;
+	private ArrayList<HentFraNett> mathentarar;
 	private ArrayList<InnhentaMiddag> historikk;
 	
 	private Fillesar fillesar;
@@ -177,7 +180,10 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 
 		kast();
 		historikk = new ArrayList<InnhentaMiddag>();
-		matprat = new Matprat(this);
+		
+		mathentarar = new ArrayList<HentFraNett>();
+		mathentarar.add(new Matprat(this));
+		mathentarar.add(new Frukt(this));
 	}
 	
 	public void oppdaterGUImedBuss(String svarstreng){
@@ -185,8 +191,8 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		bussthread.interrupt();
 	}
 	
-	public void innhentaMiddag(Middag middag, int id){
-		historikk.add(new InnhentaMiddag(middag.getNamn(), id));
+	public void innhentaMiddag(Middag middag, int id, int fraa){
+		historikk.add(new InnhentaMiddag(middag.getNamn(), id, fraa));
 		int vel = JOptionPane.showConfirmDialog(this, "Synes du " +middag.getNamn() + " høyres bra ut?","Kva trur du?",JOptionPane.YES_NO_CANCEL_OPTION);
 		if (vel == JOptionPane.YES_OPTION){
 			String ingr = "";
@@ -203,7 +209,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		}
 		else if (vel == JOptionPane.NO_OPTION){
 			System.out.println("Neivel, vi prøver på nytt");
-			matprat.getTilfeldigMiddag();
+			Random gen = new Random();
+			int veljar = gen.nextInt(mathentarar.size()-1);
+			mathentarar.get(veljar).getTilfeldigMiddag();
 		}
 	}
 
@@ -347,7 +355,9 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 		}
 		
 		public void tilfeldigRett(){
-			matprat.getTilfeldigMiddag();
+			Random gen = new Random();
+			int veljar = gen.nextInt(mathentarar.size()-1);
+			mathentarar.get(veljar).getTilfeldigMiddag();
 		}
 		
 		public void visHistorikk(){
@@ -356,12 +366,11 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			ArrayList<JButton> buttons = new ArrayList<JButton>();
 			
 			for (InnhentaMiddag m : historikk){
-				buttons.add(new JButton(m.getNamn()));
-			}
-			for (int i = 0; i < buttons.size(); i++){
-				Historikklistener h = new Historikklistener(historikk.get(i).getID());
-				buttons.get(i).addActionListener(h);
-				historikkPanel.add(buttons.get(i));
+				JButton b = new JButton(m.getNamn());
+				Historikklistener h = new Historikklistener(m.getPlass(),m.getID());
+				b.addActionListener(h);
+				historikkPanel.add(b);
+				buttons.add(b);
 			}
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Dimension full = toolkit.getScreenSize();
@@ -369,7 +378,6 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 			
 			frame.setContentPane(historikkPanel);
 			frame.pack();
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setVisible(true);
 		}
 
@@ -405,12 +413,13 @@ public class Middagsveljar extends JPanel implements PropertyChangeListener {
 	
 	class Historikklistener implements ActionListener{
 		int id;
-		public Historikklistener(int id) {
+		int plass;
+		public Historikklistener(int plass, int id) {
+			this.plass = plass;
 			this.id = id;
 		}
-		
-		public void actionPerformed(ActionEvent arg0) {
-			matprat.getMiddagFraaID(id);			
+		public void actionPerformed(ActionEvent arg0) {	
+			mathentarar.get(plass).getMiddagFraaID(id);
 		}		
 	}
 	/**

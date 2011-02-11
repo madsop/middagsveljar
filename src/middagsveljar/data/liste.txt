@@ -3,7 +3,7 @@ Middagar i Havsteinbakken 3
 April
 Tirsdag 6:	Nachos
 Onsdag 7:	Burger
-Torsdag 8:	Mekso-amerikansk gryte
+Torsdag 8:	Nord-amerikansk gryte
 Fredag 9:	Taco
 Laurdag 10:	Pizza
 Søndag 11:	Kyllingfilet
@@ -12,7 +12,7 @@ Tirsdag 13:	Fiskepinnar
 Onsdag 14:	Tikka masala
 Torsdag 15:	Nachos
 Fredag 16:	Pasta di parma
-Laurdag 17:	Spagetti ala Ålz
+Laurdag 17:	Spaghetti
 Søndag 18:	Baguettar
 Måndag 19:	Kyllingfilet
 Tirsdag 20:	Zhonguá
@@ -36,7 +36,7 @@ Onsdag 5:	Tikka masala
 Torsdag 6:	Kyllingwok
 Fredag 7:	Lasagne
 Laurdag 8:	Pytt-i-panne med egg
-Søndag 9:	Laksefilet
+Søndag 9:	Laks
 Måndag 10:	Grilla kylling
 Tirsdag 11:	Taco
 Onsdag 12:	Svinekotelettar
@@ -81,7 +81,7 @@ Torsdag 19:	Meksikansk gryte
 Fredag 20:	Laksenuddelwok
 Laurdag 21:	Taco
 Søndag 22:	-
-Måndag 23:	Ovnsgratinert laks + laksefilet med ris (/ veggis-Grandiosa)
+Måndag 23:	Ovnsgratinert + stekt laks med ris (/ veggis-Grandiosa)
 Tirsdag 24:	Løvbiff
 Onsdag 25:	-
 Torsdag 26:	Kyllingwok (+ 2 * (4 pils og ein pizza) + mykje meir – klede :D)
@@ -106,10 +106,10 @@ Laurdag 11:	Graut
 Søndag 12:	Burger
 Måndag 13:	Stroganoff-gryte / tomatsuppe / kyllingfilet / burger
 Tirsdag 14:	Laksenuddelwok
-Onsdag 15:	Kylling i baconost-saus
+Onsdag 15:	Kylling med bacon-ost-saus
 Torsdag 16:	Heimelaga pizza
 Fredag 17:	Taco
-Laurdag 18:	Bakt potet
+Laurdag 18:	Fylte bakte potetar
 Søndag 19:	Asiatisk buffet
 Måndag 20:	Tikka masala
 Tirsdag 21:	Grilla kylling
@@ -132,7 +132,7 @@ Tirsdag 5:	Burger
 Onsdag 6:	Kyllingwok
 Torsdag 7:	Pizza grandiosa
 Fredag 8:	Heimelaga pizza
-Laurdag 9:	Laksefilet
+Laurdag 9:	Laks
 Søndag 10:	Baguettar
 Måndag 11:	Fisk cordon bleu
 Tirsdag 12:	Laksenuddelwok
@@ -153,7 +153,7 @@ Tirsdag 26:	- {Kebab}
 Onsdag 27:	Paella
 Torsdag 28:	Burger/nudlar {Felafel/kebab}
 Fredag 29:	Tacogryte
-Laurdag 30:	Laksefilet
+Laurdag 30:	Laks
 Søndag 31:	Viltgryte
 
 November
@@ -179,7 +179,7 @@ Fredag 19:	Vårrullar
 Laurdag 20:	Superiore-pizza
 Søndag 21:	Mama rosa-pizza
 Måndag 22:	Marinerte svinefiletar
-Tirsdag 23:	Spagetti ala Ålz
+Tirsdag 23:	Spagetti
 Onsdag 24:	Felafel
 Torsdag 25:	Tomatsuppe y zhonguá
 Fredag 26:	Taco
@@ -197,10 +197,56 @@ Søndag 5:	Tacogryte
 Måndag 6:	Nachos
 Tirsdag 7:	Fiskekotelettar og fiskepinnar
 Onsdag 8:	Sodd
-Torsdag 9:	Løvbiff m/fløtegratinertepoteter
+Torsdag: 9:	Løvbiff m/fløtegratinertepoteter
 Fredag 10:	Nachos
 Laurdag 11:	Mama Rosa-pizza/Burger/Fiskesuppe/Pizza
 Søndag 12:	Pasta di Parma med en vri
 Måndag 13:	Mama Rosa-pizza
 Tirsdag 14:	Mattas Gryte
 Onsdag 15:	Laksefilet
+Torsdag 16:	- {?}
+Fredag 17:	Kyllinghimmel
+Laurdag 18:	- {?}
+Søndag 19:	- {?}
+Måndag 20:	- {?}
+Tirsdag 21:	Taco
+Onsdag 22:	Taco
+2011
+Januar
+Onsdag 5:	Spagetti
+Torsdag 6:	Chili con carne
+Fredag 7:	Taco
+Laurdag 8:	Squashgrateng
+Søndag 9:	Laksefilet
+Måndag 10:	Tacogryte
+Tirsdag 11:	Pizza
+Onsdag 12:	Ribbe!!
+Torsdag 13:	Laksehimmel
+Fredag 14:	Wok
+Laurdag 15:	Nachos
+Søndag 16:	Orientalsk gryte m/naanbrød + kvitløksbaguettar
+Måndag 17:	Veggisvennlig Afgansk Lamme(kikert)rett uten lam
+Tirsdag 18:	Meksikansk gryte
+Onsdag 19:	Burger/Sesam
+Torsdag 20:	Baguettar
+Fredag 21:	Chaca Masala m/fisk
+Laurdag 22:	Graut med spekeskinke / laksekotelettar
+Søndag 23:	Heil sjølvrensa ørret
+Måndag 24:	Koshary
+Tirsdag 25:	Meksikansk gryte
+Onsdag 26:	Ørretfilet
+Torsdag 27:	Fylt paprika
+Fredag 28:	Heimelaga pizza
+Laurdag 29:	Risotto
+Søndag 30:	Pizza
+Måndag 31:	Lasagne
+
+Februar
+Tirsdag 1:	Fiskegrateng
+Onsdag 2:	Laksetagliatelle
+Torsdag 3:	Taco
+Fredag 4:	Burger
+Laurdag 5:	Enchiladas
+Søndag 6:	Baguett / tomatsuppe
+Måndag 7:	- {Felafel}
+Tirsdag 8:	Burger

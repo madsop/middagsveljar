@@ -67,8 +67,11 @@ public class Busslesar extends Fillesar {
 		
 		int tidtilnesteoppover = -1;
 		int tidtilnestenedover = -1;
-		if (time > 1 && time < 6){
-			return "Det går ikkje trikk før om altfor lengje...";
+		if ( (time >= 4 || (time == 3 && min > 25) ) && time < 6){
+			return "Natt-trikken har slutta å gå. Hallo!";
+		}
+		if ( (time >= 1 || (time==0 && min > 25)) && time < 6){
+			return "Det går ikkje trikk før om altfor lengje... Legg deg, din slask!";
 		}
 		
 		if (vekedag == 0 || time > 18 || (vekedag==5 && (time < 9 || time > 15) )){ // For kvar-halvtime-periodane

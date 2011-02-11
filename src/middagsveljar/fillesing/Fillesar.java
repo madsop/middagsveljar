@@ -51,6 +51,9 @@ public class Fillesar {
 		String[] splitta;
 		for (int i = 0; i < lesiInn.size(); i++){
 			splitta = lesiInn.get(i).split(":	");
+			if (splitta.length < 2){
+				System.out.println(splitta[0]);
+			}
 			if (!(splitta[1].contains("-") && splitta[1].charAt(0)=='-')){ // - altså ingen
 				if (splitta[1].contains("(") && splitta[1].charAt(0)!='('){
 					splitta[1] = splitta[1].split("\\(")[0];

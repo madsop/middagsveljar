@@ -12,7 +12,7 @@ public class Matprat implements HentFraNett{
 	private String URL = "http://www.matprat.no/artikkel.aspx?artid=";
 	private int antalArtiklar = 19715;	
 	private Middagsveljar middagsveljar;
-	private static final int thisPlass = 0;
+	private static final int thisPlass = 1;
 	
 	public Matprat(Middagsveljar middagsveljar){
 		this.middagsveljar = middagsveljar;

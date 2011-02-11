@@ -58,6 +58,7 @@ public class MiddagsveljarModell extends AbstractListModel{
 	 * @param antalMiddagar - kor mange middagar skal vi ha?
 	 */
 	public void nyMiddagVald(int antalMiddagar) {
+		System.out.println("nyvald");
 		int oldValue = this.antalMiddagar;
 		this.antalMiddagar = antalMiddagar;
 		pcs.firePropertyChange(ANTAL_PROPERTY, oldValue, antalMiddagar);

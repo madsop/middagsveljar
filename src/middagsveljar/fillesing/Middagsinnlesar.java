@@ -42,11 +42,12 @@ public class Middagsinnlesar extends Fillesar{
 				}
 			}
 			ArrayList<String> oppskrift = new ArrayList<String>();
-			if(!splitta[2].equals("-")){
-				String[] oppskriftstring = splitta[2].split(",");
+			if(!splitta[3].equals("-")){
+				String[] oppskriftstring = splitta[3].split(",");
 				for (int j = 0; j < oppskriftstring.length; j++){
 					oppskrift.add(oppskriftstring[j]);
 				}
+				System.out.println(oppskrift.get(0));
 			}
 			middagar.add(new Middag(namn, likerIkkje, ingrediensar, oppskrift));
 		}
